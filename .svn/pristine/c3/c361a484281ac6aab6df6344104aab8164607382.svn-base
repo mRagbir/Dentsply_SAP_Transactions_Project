@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schickweb.schicknt.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schickweb.schicknt.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schickweb.schicknt.com/">
+      <s:element name="WhoIsThis">
+        <s:complexType />
+      </s:element>
+      <s:element name="WhoIsThisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WhoIsThisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserInfoResult" type="tns:SensorDataBaseAccess" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SensorDataBaseAccess">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UAPID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isCompanyAdmin" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUserAdmin" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isSuperAdmin" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="centralAccess" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="helpdeskAccess" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="homePage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanAddCompany" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanAddLocation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanAccessLiveTestResult" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanAccessRecordedTestResult" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="parentCompanyID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsWaferExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="carrieridwafernumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeStep" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsWaferExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsWaferExistsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLotFailedSensors">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml_lot_data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLotFailedSensorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLotFailedSensorsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMFG_Lot_Number_ID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChipID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMFG_Lot_Number_IDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMFG_Lot_Number_IDResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChipID_By_MFG_Lot_Number_ID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="MFG_Lot_Number_ID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="WaferNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DieNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChipID_By_MFG_Lot_Number_IDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChipID_By_MFG_Lot_Number_IDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveWorkingTestDataXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveWorkingTestDataXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveWorkingTestDataXMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLotProcessResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lotid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="waferid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLotProcessResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveLotProcessResultsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogoutResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLotInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lotid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wafercarrierid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chipid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLotInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLotInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTestTypeID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lotid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wafercarrierid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chipid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTestTypeIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTestTypeIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDiesPerLot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lotid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDiesPerLotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getDiesPerLotResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveVerifySerialization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveVerifySerializationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveVerifySerializationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEventResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTestImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uapid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="byTestTypeName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byTestTypeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byLotnumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bySensorpartnumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byImageFilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTestImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTestImagesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WhoIsThisSoapIn">
+    <wsdl:part name="parameters" element="tns:WhoIsThis" />
+  </wsdl:message>
+  <wsdl:message name="WhoIsThisSoapOut">
+    <wsdl:part name="parameters" element="tns:WhoIsThisResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsWaferExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:IsWaferExists" />
+  </wsdl:message>
+  <wsdl:message name="IsWaferExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:IsWaferExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLotFailedSensorsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLotFailedSensors" />
+  </wsdl:message>
+  <wsdl:message name="SaveLotFailedSensorsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLotFailedSensorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMFG_Lot_Number_IDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMFG_Lot_Number_ID" />
+  </wsdl:message>
+  <wsdl:message name="GetMFG_Lot_Number_IDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMFG_Lot_Number_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChipID_By_MFG_Lot_Number_IDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChipID_By_MFG_Lot_Number_ID" />
+  </wsdl:message>
+  <wsdl:message name="GetChipID_By_MFG_Lot_Number_IDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChipID_By_MFG_Lot_Number_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveWorkingTestDataXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveWorkingTestDataXML" />
+  </wsdl:message>
+  <wsdl:message name="SaveWorkingTestDataXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveWorkingTestDataXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLotProcessResultsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLotProcessResults" />
+  </wsdl:message>
+  <wsdl:message name="SaveLotProcessResultsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLotProcessResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLotInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getLotInfo" />
+  </wsdl:message>
+  <wsdl:message name="getLotInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getLotInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getTestTypeID" />
+  </wsdl:message>
+  <wsdl:message name="getTestTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getTestTypeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDiesPerLotSoapIn">
+    <wsdl:part name="parameters" element="tns:getDiesPerLot" />
+  </wsdl:message>
+  <wsdl:message name="getDiesPerLotSoapOut">
+    <wsdl:part name="parameters" element="tns:getDiesPerLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveVerifySerializationSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveVerifySerialization" />
+  </wsdl:message>
+  <wsdl:message name="MoveVerifySerializationSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveVerifySerializationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEventSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEvent" />
+  </wsdl:message>
+  <wsdl:message name="SendEventSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserName" />
+  </wsdl:message>
+  <wsdl:message name="GetUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:getTestImages" />
+  </wsdl:message>
+  <wsdl:message name="getTestImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:getTestImagesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SensorDataAccessServiceWSSoap">
+    <wsdl:operation name="WhoIsThis">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Identify the name of this module</wsdl:documentation>
+      <wsdl:input message="tns:WhoIsThisSoapIn" />
+      <wsdl:output message="tns:WhoIsThisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">User Credentials Login</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtain User Information from Credentials</wsdl:documentation>
+      <wsdl:input message="tns:getUserInfoSoapIn" />
+      <wsdl:output message="tns:getUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsWaferExists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Determine if a wafer exists at a defined RecipeStep</wsdl:documentation>
+      <wsdl:input message="tns:IsWaferExistsSoapIn" />
+      <wsdl:output message="tns:IsWaferExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotFailedSensors">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save WIP Data</wsdl:documentation>
+      <wsdl:input message="tns:SaveLotFailedSensorsSoapIn" />
+      <wsdl:output message="tns:SaveLotFailedSensorsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMFG_Lot_Number_ID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtained the internal MFG_Lot_Number_ID for a ChipID(SensorPartNumber) </wsdl:documentation>
+      <wsdl:input message="tns:GetMFG_Lot_Number_IDSoapIn" />
+      <wsdl:output message="tns:GetMFG_Lot_Number_IDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChipID_By_MFG_Lot_Number_ID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtained the ChipID(SensorPartNumber) for a given internal MFG_Lot_Number_ID, Wafer and Die Number</wsdl:documentation>
+      <wsdl:input message="tns:GetChipID_By_MFG_Lot_Number_IDSoapIn" />
+      <wsdl:output message="tns:GetChipID_By_MFG_Lot_Number_IDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkingTestDataXML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save Working Settings, Results and Images for a Test</wsdl:documentation>
+      <wsdl:input message="tns:SaveWorkingTestDataXMLSoapIn" />
+      <wsdl:output message="tns:SaveWorkingTestDataXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotProcessResults">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;table&gt;&lt;tr&gt;&lt;td&gt;Summary:&lt;/td&gt;&lt;td&gt;Save WIP Lot Processing Results&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Parameters:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;uapid:&lt;/td&gt;&lt;td&gt;user account personal identification&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;testtype:&lt;/td&gt;&lt;td&gt;test type id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;lotid:&lt;/td&gt;&lt;td&gt;lot id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;waferid:&lt;/td&gt;&lt;td&gt;wafer id.  this is for processes prior to Lot Creation&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Result:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Success or &lt;/td&gt;&lt;td&gt;some Error&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SaveLotProcessResultsSoapIn" />
+      <wsdl:output message="tns:SaveLotProcessResultsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Record Logout of user</wsdl:documentation>
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLotInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtain Lot Information by lotid, wafer id or chip id. Returns a Data Table</wsdl:documentation>
+      <wsdl:input message="tns:getLotInfoSoapIn" />
+      <wsdl:output message="tns:getLotInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestTypeID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtain the test type id by lotid, wafer id or chip id. Returns a string</wsdl:documentation>
+      <wsdl:input message="tns:getTestTypeIDSoapIn" />
+      <wsdl:output message="tns:getTestTypeIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDiesPerLot">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtain the quantity of dies per given lot</wsdl:documentation>
+      <wsdl:input message="tns:getDiesPerLotSoapIn" />
+      <wsdl:output message="tns:getDiesPerLotSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveVerifySerialization">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Complete the VerifySerialization Step for a lot with a Sensor having serialNumber</wsdl:documentation>
+      <wsdl:input message="tns:MoveVerifySerializationSoapIn" />
+      <wsdl:output message="tns:MoveVerifySerializationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send Event Notification</wsdl:documentation>
+      <wsdl:input message="tns:SendEventSoapIn" />
+      <wsdl:output message="tns:SendEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a User's Name</wsdl:documentation>
+      <wsdl:input message="tns:GetUserNameSoapIn" />
+      <wsdl:output message="tns:GetUserNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestImages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtain the images by byImageFilePath or by the rest of the other parameters</wsdl:documentation>
+      <wsdl:input message="tns:getTestImagesSoapIn" />
+      <wsdl:output message="tns:getTestImagesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SensorDataAccessServiceWSSoap" type="tns:SensorDataAccessServiceWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WhoIsThis">
+      <soap:operation soapAction="http://schickweb.schicknt.com/WhoIsThis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://schickweb.schicknt.com/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <soap:operation soapAction="http://schickweb.schicknt.com/getUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsWaferExists">
+      <soap:operation soapAction="http://schickweb.schicknt.com/IsWaferExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotFailedSensors">
+      <soap:operation soapAction="http://schickweb.schicknt.com/SaveLotFailedSensors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMFG_Lot_Number_ID">
+      <soap:operation soapAction="http://schickweb.schicknt.com/GetMFG_Lot_Number_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChipID_By_MFG_Lot_Number_ID">
+      <soap:operation soapAction="http://schickweb.schicknt.com/GetChipID_By_MFG_Lot_Number_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkingTestDataXML">
+      <soap:operation soapAction="http://schickweb.schicknt.com/SaveWorkingTestDataXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotProcessResults">
+      <soap:operation soapAction="http://schickweb.schicknt.com/SaveLotProcessResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://schickweb.schicknt.com/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLotInfo">
+      <soap:operation soapAction="http://schickweb.schicknt.com/getLotInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestTypeID">
+      <soap:operation soapAction="http://schickweb.schicknt.com/getTestTypeID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDiesPerLot">
+      <soap:operation soapAction="http://schickweb.schicknt.com/getDiesPerLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveVerifySerialization">
+      <soap:operation soapAction="http://schickweb.schicknt.com/MoveVerifySerialization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEvent">
+      <soap:operation soapAction="http://schickweb.schicknt.com/SendEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserName">
+      <soap:operation soapAction="http://schickweb.schicknt.com/GetUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestImages">
+      <soap:operation soapAction="http://schickweb.schicknt.com/getTestImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SensorDataAccessServiceWSSoap12" type="tns:SensorDataAccessServiceWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WhoIsThis">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/WhoIsThis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/getUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsWaferExists">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/IsWaferExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotFailedSensors">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/SaveLotFailedSensors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMFG_Lot_Number_ID">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/GetMFG_Lot_Number_ID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChipID_By_MFG_Lot_Number_ID">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/GetChipID_By_MFG_Lot_Number_ID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkingTestDataXML">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/SaveWorkingTestDataXML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLotProcessResults">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/SaveLotProcessResults" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLotInfo">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/getLotInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestTypeID">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/getTestTypeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDiesPerLot">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/getDiesPerLot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveVerifySerialization">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/MoveVerifySerialization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEvent">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/SendEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserName">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/GetUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestImages">
+      <soap12:operation soapAction="http://schickweb.schicknt.com/getTestImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SensorDataAccessServiceWS">
+    <wsdl:port name="SensorDataAccessServiceWSSoap" binding="tns:SensorDataAccessServiceWSSoap">
+      <soap:address location="http://schickweb.schicknt.com/Services/SensorDataAccessServiceWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SensorDataAccessServiceWSSoap12" binding="tns:SensorDataAccessServiceWSSoap12">
+      <soap12:address location="http://schickweb.schicknt.com/Services/SensorDataAccessServiceWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

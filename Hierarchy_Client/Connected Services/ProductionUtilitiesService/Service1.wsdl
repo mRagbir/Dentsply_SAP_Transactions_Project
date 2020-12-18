@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetAllMaterialInfo">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllMaterialInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetAllMaterialInfoResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getName">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getNameResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetErrorCodeDescription">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="errorCode" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetErrorCodeDescriptionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetErrorCodeDescriptionResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateMaterialNumber">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_materialNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateMaterialNumberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateMaterialNumberResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckCableSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="cableMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cableSerialNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckCableSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckCableSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckKitSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="kitSerialNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckKitSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckKitSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckSensorSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sensorMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sensorSerialNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckSensorSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckSensorSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckRemoteSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="remoteSerialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="remotePartNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckRemoteSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckRemoteSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStarterKitSensor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="starterKitPartNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sensorSerial" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStarterKitSensorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckStarterKitSensorResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckAEComboKitSensor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="comboKitPartNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="size1Serial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="size2Serial" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckAEComboKitSensorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckAEComboKitSensorResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCableKitSerials">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_cableMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCableKitSerialsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertCableKitSerialsResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAEComboKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_size1Sensor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_size2Sensor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_remoteSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAEComboKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertAEComboKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAERmaKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAERmaKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertAERmaKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAESensorShipKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_spareCableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAESensorShipKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertAESensorShipKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAEStarterKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorSerialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_remoteSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertAEStarterKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertAEStarterKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertSensorShipKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_spareCableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertSensorShipKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertSensorShipKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertRMASensorShipKit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_kitMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_orderNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertRMASensorShipKitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertRMASensorShipKitResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertNote">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="rowId" type="xs:int" />
+            <xs:element minOccurs="0" name="_materialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_uapid" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertNoteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertNoteResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCableSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_cableMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_cableSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitMaterialCableWasUsedIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCableSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertCableSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertRemoteSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_remoteMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_remoteSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitMaterialRemoteWasUsedIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitSerialRemoteWasUsedIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertRemoteSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertRemoteSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertSensorSerial">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_sensorMaterialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_sensorSerial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_kitMaterialSensorWasUsedIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_note" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertSensorSerialResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertSensorSerialResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCalibDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_serialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_chipID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_lotNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_calibStation" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCalibDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InsertCalibDetailsResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCalibDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_serialNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_chipID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_lotNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_calibStation" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCalibDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetCalibDetailsResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceContracts_GetAllMaterialInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMaterialInfo" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_GetAllMaterialInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMaterialInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_getName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getName" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_getName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_GetErrorCodeDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetErrorCodeDescription" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_GetErrorCodeDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetErrorCodeDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_ValidateMaterialNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateMaterialNumber" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_ValidateMaterialNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateMaterialNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckCableSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCableSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckCableSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCableSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckKitSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckKitSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckKitSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckKitSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckSensorSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSensorSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckSensorSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSensorSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckRemoteSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckRemoteSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckRemoteSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckRemoteSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckStarterKitSensor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStarterKitSensor" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckStarterKitSensor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStarterKitSensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckAEComboKitSensor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAEComboKitSensor" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_CheckAEComboKitSensor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAEComboKitSensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCableKitSerials_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCableKitSerials" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCableKitSerials_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCableKitSerialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAEComboKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAEComboKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAEComboKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAEComboKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAERmaKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAERmaKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAERmaKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAERmaKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAESensorShipKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAESensorShipKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAESensorShipKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAESensorShipKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAEStarterKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAEStarterKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertAEStarterKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAEStarterKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertSensorShipKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSensorShipKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertSensorShipKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSensorShipKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertRMASensorShipKit_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRMASensorShipKit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertRMASensorShipKit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRMASensorShipKitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNote" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCableSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCableSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCableSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCableSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertRemoteSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRemoteSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertRemoteSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRemoteSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertSensorSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSensorSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertSensorSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSensorSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCalibDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCalibDetails" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_InsertCalibDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCalibDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_GetCalibDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalibDetails" />
+  </wsdl:message>
+  <wsdl:message name="IServiceContracts_GetCalibDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalibDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceContracts">
+    <wsdl:operation name="GetAllMaterialInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/GetAllMaterialInfo" message="tns:IServiceContracts_GetAllMaterialInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/GetAllMaterialInfoResponse" message="tns:IServiceContracts_GetAllMaterialInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/getName" message="tns:IServiceContracts_getName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/getNameResponse" message="tns:IServiceContracts_getName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorCodeDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/GetErrorCodeDescription" message="tns:IServiceContracts_GetErrorCodeDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/GetErrorCodeDescriptionResponse" message="tns:IServiceContracts_GetErrorCodeDescription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateMaterialNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/ValidateMaterialNumber" message="tns:IServiceContracts_ValidateMaterialNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/ValidateMaterialNumberResponse" message="tns:IServiceContracts_ValidateMaterialNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCableSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckCableSerial" message="tns:IServiceContracts_CheckCableSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckCableSerialResponse" message="tns:IServiceContracts_CheckCableSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckKitSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckKitSerial" message="tns:IServiceContracts_CheckKitSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckKitSerialResponse" message="tns:IServiceContracts_CheckKitSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSensorSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckSensorSerial" message="tns:IServiceContracts_CheckSensorSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckSensorSerialResponse" message="tns:IServiceContracts_CheckSensorSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckRemoteSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckRemoteSerial" message="tns:IServiceContracts_CheckRemoteSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckRemoteSerialResponse" message="tns:IServiceContracts_CheckRemoteSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStarterKitSensor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckStarterKitSensor" message="tns:IServiceContracts_CheckStarterKitSensor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckStarterKitSensorResponse" message="tns:IServiceContracts_CheckStarterKitSensor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAEComboKitSensor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/CheckAEComboKitSensor" message="tns:IServiceContracts_CheckAEComboKitSensor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/CheckAEComboKitSensorResponse" message="tns:IServiceContracts_CheckAEComboKitSensor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCableKitSerials">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertCableKitSerials" message="tns:IServiceContracts_InsertCableKitSerials_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertCableKitSerialsResponse" message="tns:IServiceContracts_InsertCableKitSerials_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAEComboKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertAEComboKit" message="tns:IServiceContracts_InsertAEComboKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertAEComboKitResponse" message="tns:IServiceContracts_InsertAEComboKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAERmaKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertAERmaKit" message="tns:IServiceContracts_InsertAERmaKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertAERmaKitResponse" message="tns:IServiceContracts_InsertAERmaKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAESensorShipKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertAESensorShipKit" message="tns:IServiceContracts_InsertAESensorShipKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertAESensorShipKitResponse" message="tns:IServiceContracts_InsertAESensorShipKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAEStarterKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertAEStarterKit" message="tns:IServiceContracts_InsertAEStarterKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertAEStarterKitResponse" message="tns:IServiceContracts_InsertAEStarterKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSensorShipKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertSensorShipKit" message="tns:IServiceContracts_InsertSensorShipKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertSensorShipKitResponse" message="tns:IServiceContracts_InsertSensorShipKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRMASensorShipKit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertRMASensorShipKit" message="tns:IServiceContracts_InsertRMASensorShipKit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertRMASensorShipKitResponse" message="tns:IServiceContracts_InsertRMASensorShipKit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertNote" message="tns:IServiceContracts_InsertNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertNoteResponse" message="tns:IServiceContracts_InsertNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCableSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertCableSerial" message="tns:IServiceContracts_InsertCableSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertCableSerialResponse" message="tns:IServiceContracts_InsertCableSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRemoteSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertRemoteSerial" message="tns:IServiceContracts_InsertRemoteSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertRemoteSerialResponse" message="tns:IServiceContracts_InsertRemoteSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSensorSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertSensorSerial" message="tns:IServiceContracts_InsertSensorSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertSensorSerialResponse" message="tns:IServiceContracts_InsertSensorSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCalibDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/InsertCalibDetails" message="tns:IServiceContracts_InsertCalibDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/InsertCalibDetailsResponse" message="tns:IServiceContracts_InsertCalibDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCalibDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceContracts/GetCalibDetails" message="tns:IServiceContracts_GetCalibDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceContracts/GetCalibDetailsResponse" message="tns:IServiceContracts_GetCalibDetails_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceContracts" type="tns:IServiceContracts">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMaterialInfo">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/GetAllMaterialInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getName">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/getName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorCodeDescription">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/GetErrorCodeDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateMaterialNumber">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/ValidateMaterialNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCableSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckCableSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckKitSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckKitSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSensorSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckSensorSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckRemoteSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckRemoteSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStarterKitSensor">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckStarterKitSensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAEComboKitSensor">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/CheckAEComboKitSensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCableKitSerials">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertCableKitSerials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAEComboKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertAEComboKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAERmaKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertAERmaKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAESensorShipKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertAESensorShipKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAEStarterKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertAEStarterKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSensorShipKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertSensorShipKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRMASensorShipKit">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertRMASensorShipKit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNote">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCableSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertCableSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRemoteSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertRemoteSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSensorSerial">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertSensorSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCalibDetails">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/InsertCalibDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalibDetails">
+      <soap:operation soapAction="http://tempuri.org/IServiceContracts/GetCalibDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IServiceContracts" binding="tns:BasicHttpBinding_IServiceContracts">
+      <soap:address location="http://atproomw10-1.schicknt.com:9876/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

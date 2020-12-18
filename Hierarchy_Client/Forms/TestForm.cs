@@ -1,0 +1,476 @@
+﻿using MetroFramework.Forms;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using WcfSAPService;
+
+using System.Configuration;
+using SAPConnectionClientProxy;
+using Dentsply_SAP_Transactions_Service;
+
+namespace Hierarchy_Client
+{
+    public partial class TestForm : MetroForm
+    {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public TestForm()
+        {
+            InitializeComponent();
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //test sap service
+              //  SAPConnectionClient client = new SAPConnectionClient("SAPTCP");
+
+                //connection test
+              //  string results = client.TestSAPConnection("PerformConnectionTest");
+
+             //   MessageBox.Show(results);
+
+                var t = SAP_CONNECTION.TestConnection.TestSAPConnection();
+                MessageBox.Show($"Connection status :{t}","Sap connection test results");
+                //determine is connection test passed
+               // bool bIsPassed = Convert.ToBoolean(results.Split(':')[1].ToString());
+            }
+            catch (Exception up)
+            {
+
+                throw up;
+            }
+        }
+
+        private void btn_TestHierarchy_Click(object sender, EventArgs e)
+        {
+
+
+            string[] argsForHierarchy = new string[]
+            {
+            "7647004",
+            "B1318001",
+            "IL30001934",
+            "FG-S11",
+            "1",
+            "true",
+            "true",
+            "false",
+            "false",
+            "true",
+            "false",
+            "true",
+            "true",
+            "B1318200",
+            "26005083",
+            "B1209156",
+            "UL56984",
+            "UL78545",
+            string.Empty,//"RemotePartNumber"
+            string.Empty //"Remote_SerialNumber"
+            };
+
+            try
+            {
+                //test sap service
+                SAPConnectionClient client = new SAPConnectionClient("SAPTCP");
+
+                var results = client.PerformSAPHierarchyTransaction(argsForHierarchy);
+                MessageBox.Show(results);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> lMethodNames = new List<string>();
+
+            try
+            {
+                //use reflection to see all methods available in interface
+                var interfaceMethodNames = typeof(ISapService).GetMethods();
+
+                //add method names to list
+                foreach (var item in interfaceMethodNames)
+                {
+                    lMethodNames.Add(item.Name);
+                }
+
+                //invoke 1 method for test
+                var instance = new SapService();
+                var method = typeof(ISapService).GetMethod("TestSAPConnection");
+                var res = method.Invoke(instance, new object[] { "PerformConnectionTest" });
+
+                var results = $"Message from exe : {res}";
+                MessageBox.Show(results);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
+
+        }
+
+        private void btn_SapTestDirect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user = ConfigurationManager.AppSettings["SAP_User"];
+                string password = ConfigurationManager.AppSettings["SAP_Password"];
+                string client = ConfigurationManager.AppSettings["SAP_Client"];
+             
+                //test
+                //bool test = SAP_CSharp_Connection.MakeNewSapConnection.ConnectToRunningSapInstance(user, password, client);
+
+                //if (test)
+                //{
+
+                //    SAP_CSharp_Connection.MakeNewSapConnection.TestSessionControls();
+
+                //    SAP_CSharp_Connection.MakeNewSapConnection.KillSapConnection();
+
+                //    MessageBox.Show("Connection successful finallyyyyyyyy !!!! ");
+
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Connection unsuccessful you suck !!!!!!");
+                //}
+
+
+               
+                
+              
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void btn_ExcelTest_Click(object sender, EventArgs e)
+        {
+
+            string fileLocation = @"E:\Production SAP Excel Scripts\SAP_FullAPI.xlsm";
+            //string fileLocation = @"E:\Production SAP Excel Scripts\TestFileWIthMacroParameters.xlsm"; //<~~~ working
+            //string testString = "B1218000";
+
+            try
+            {
+
+              
+                //~~> Define your Excel Objects
+                //Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+                //Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+
+                ////~~> Start Excel and open the workbook.
+                //xlWorkBook = xlApp.Workbooks.Open(fileLocation);
+
+                ////~~> Run the macros by supplying the necessary arguments
+                //xlApp.Run("SAPConnectionTest");
+
+
+                ////~~> Clean-up: Close the workbook
+                //xlWorkBook.Close(false);
+
+                ////~~> Quit the Excel Application
+                //xlApp.Quit();
+
+                ////~~> Clean Up
+                //releaseObject(xlApp);
+                //releaseObject(xlWorkBook);
+
+                //Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                //ExcelApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
+                //ExcelApp.DisplayAlerts = true;
+                //object misValue = System.Reflection.Missing.Value;
+                //ExcelApp.Visible = true;
+                //Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook = ExcelApp.Workbooks.Open(fileLocation);
+                ////ExcelApp.Run("RunTestWithParams", testString);//<~~~ working
+                //ExcelApp.Run("SAPConnectionTest");
+                //ExcelWorkBook.Save();
+                //ExcelWorkBook.Close(false, misValue, misValue);
+                //ExcelApp.Quit();
+                //if (ExcelWorkBook != null) { System.Runtime.InteropServices.Marshal.ReleaseComObject(ExcelWorkBook); }
+                //if (ExcelApp != null) { System.Runtime.InteropServices.Marshal.ReleaseComObject(ExcelApp); }
+
+              
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+        }
+
+        //~~> Release the objects
+        private void releaseObject(object obj)
+        {
+            //try
+            //{
+            //    System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+            //    obj = null;
+            //}
+            //catch (Exception ex)
+            //{
+            //    obj = null;
+            //}
+            //finally
+            //{
+            //    GC.Collect();
+            //}
+        }
+
+        private void btn_TestStoredProcedures_Click(object sender, EventArgs e)
+        {
+            DataTable dtValidateMaterial = new DataTable();
+            string _materialNumber = "B1218000";
+
+            try
+            {
+
+
+                //test sap service
+                SAPConnectionClient clientProxy = new SAPConnectionClient("SAPTCP");
+                dtValidateMaterial = clientProxy.GetMaterialInfoUsingMaterialNumber(_materialNumber);
+
+
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+
+
+
+        }
+
+        private void btn_dbTest_Click(object sender, EventArgs e)
+        {
+          
+
+
+            try
+            {
+                string testMaterial = ConfigurationManager.AppSettings["TestMaterialNumber"].ToString();
+
+                //try to get all  material info
+                DataTable dtTempMaterial = Helper.dtGetMaterialInfoUsingMaterialNumber(testMaterial);
+
+                if(dtTempMaterial.Rows.Count > 0 && dtTempMaterial != null)
+                {
+                    dg_TestInfo.DataSource = dtTempMaterial;
+                }
+                else
+                {
+                    MessageBox.Show($"DataTable is empty and did NOT return any results!");
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Cannot get material info : {ex.Message}");
+                return;
+            }
+
+
+
+
+        }
+
+        private void metroBtn_Submit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_TestLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user = ConfigurationManager.AppSettings["TestUser"].ToString();
+                string pass = ConfigurationManager.AppSettings["TestPass"].ToString();
+                string credentials = ($"{user}|{pass}");
+                int _uapid;
+
+
+                bool isValid = Int32.TryParse(Helper.Login(credentials), out _uapid);
+                if (isValid)
+                {
+                    MessageBox.Show($"User {_uapid} is valid ! , Connection to Schickweb is good!");
+                }
+                else
+                {
+                    MessageBox.Show($"User is NOT valid , No connection to schickweb!");
+                }              
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Login error : {ex.Message}");
+            }
+
+
+        }
+
+        private void btn_Home_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
+
+            //kill all the KitInfo variables that have already been established
+            KitInfo.Instance.ClearAll();
+
+            MainMenu mm = new MainMenu();
+            mm.ShowDialog();
+        }
+
+        private void TestForm_Load(object sender, EventArgs e)
+        {
+            //get app version from appconfig and display on form
+            label_Version.Text = $"Version {ConfigurationManager.AppSettings["Version"].ToString()}";
+        }
+
+        private void btn_MaterialCheckFromService_Click(object sender, EventArgs e)
+        {
+           string materialNumber = "B1218000";
+
+            try
+            {
+                DataTable dtTest = WcfSAPService.Business_Logic.DataToDB.GetMaterialInfoUsingMaterialNumber(materialNumber);
+
+                if (dtTest.Rows.Count > 0)
+                {
+                    dg_TestInfo.DataSource = dtTest;
+                }
+                else
+                {
+                    MessageBox.Show("Failed to get material info !");
+                    return;
+                }
+                
+
+            }
+            catch (Exception up)
+            {
+
+                throw up;
+            }
+        }
+
+        private void btn_GetSAPInfo_Click(object sender, EventArgs e)
+        {
+            string materialNumber = "B1218000";
+            string kitSerial = "IS20020416";
+            DataTable dtTemp = new DataTable();
+
+            try
+            {
+
+                var getInfo = SAP_CONNECTION.SAP_Serial_Lookup.SAP_PerformSerialLookup(materialNumber, kitSerial);
+                if (getInfo != null)
+                {
+                    dtTemp = CopyInfoToDatatable(materialNumber, kitSerial, getInfo);
+                    dg_TestInfo.DataSource = dtTemp;
+                }
+                else
+                {
+                    MessageBox.Show("No SAP Info found");
+                }
+
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+
+        }
+
+        private DataTable CopyInfoToDatatable(string parentMaterial, string parentSerial, Dictionary<string, string> sapInfo)
+        {
+            DataTable dtTemp = new DataTable();
+            DataRow dr;
+            DataColumn column;
+
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Material";
+            dtTemp.Columns.Add(column);
+
+            // Create second column.
+            column = new DataColumn();
+            column.DataType = Type.GetType("System.String");
+            column.ColumnName = "Serial";
+            dtTemp.Columns.Add(column);
+
+            //add parent info to table first
+            dr = dtTemp.NewRow();
+            dr["Material"] = parentMaterial;
+            dr["Serial"] = parentSerial;
+            dtTemp.Rows.Add(dr);
+
+            foreach (var item in sapInfo)
+            {
+                var serial = item.Key;
+                var material = item.Value;
+
+
+                dr = dtTemp.NewRow();
+                dr["Material"] = material;
+                dr["Serial"] = serial;
+
+
+                dtTemp.Rows.Add(dr);
+            };
+
+
+            return dtTemp;
+
+        }
+    }
+
+
+}

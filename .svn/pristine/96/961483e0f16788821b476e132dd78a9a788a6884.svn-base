@@ -1,0 +1,384 @@
+// SAPConnectionClientProxy.SAPConnectionClient
+using Dentsply_SAP_Transactions_Service;
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.ServiceModel;
+
+namespace SAPConnectionClientProxy
+{
+	public class SAPConnectionClient : ClientBase<ISapService>, ISapService
+	{
+		public SAPConnectionClient(string endpointConfigurationName)
+			: base(endpointConfigurationName)
+		{
+		}
+
+		public string Test(string value)
+		{
+			try
+			{
+				return base.Channel.Test(value);
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+		}
+
+		public string TestSAPConnection(string args)
+		{
+			string results = string.Empty;
+			try
+			{
+				return base.Channel.TestSAPConnection(args);
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+		}
+
+		public string PerformSAPHierarchyTransaction(string[] args)
+		{
+			try
+			{
+				return base.Channel.PerformSAPHierarchyTransaction(args);
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+		}
+
+		public DataTable CheckIfSensorUsedInAnyKit(string sensorMaterialNumber, string sensorSerial)
+		{
+			try
+			{
+				return base.Channel.CheckIfSensorUsedInAnyKit(sensorMaterialNumber, sensorSerial);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		public DataTable GetSensorPartsListID(string serial)
+		{
+			try
+			{
+				return base.Channel.GetSensorPartsListID(serial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetMaterialInfoUsingRowID(string materialNumber, int rowID)
+		{
+			try
+			{
+				return base.Channel.GetMaterialInfoUsingRowID(materialNumber, rowID);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable CheckIfCableSerialExists(string materialNumber, string serial)
+		{
+			try
+			{
+				return base.Channel.CheckIfCableSerialExists(materialNumber, serial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable CheckIfKitSerialExists(string materialNumber, string serial)
+		{
+			try
+			{
+				return base.Channel.CheckIfKitSerialExists(materialNumber, serial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable CheckIfRemoteSerialExists(string materialNumber, string serial)
+		{
+			try
+			{
+				return base.Channel.CheckIfRemoteSerialExists(materialNumber, serial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable CheckIfSensorSerialExists(string materialNumber, string serial)
+		{
+			try
+			{
+				return base.Channel.CheckIfSensorSerialExists(materialNumber, serial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetKitRowID(string kitMaterialNumber, string kitSerial)
+		{
+			try
+			{
+				return base.Channel.GetKitRowID(kitMaterialNumber, kitSerial);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetMaterialInfoUsingMaterialNumber(string _materialNumber)
+		{
+			try
+			{
+				return base.Channel.GetMaterialInfoUsingMaterialNumber(_materialNumber);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetUDISpecialCases()
+		{
+			try
+			{
+				return base.Channel.GetUDISpecialCases();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public List<string> ParseUDIBarcode(string barcodeString)
+		{
+			try
+			{
+				return base.Channel.ParseUDIBarcode(barcodeString);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public bool ValidateMaterialNumber(string materialNumber)
+		{
+			try
+			{
+				return base.Channel.ValidateMaterialNumber(materialNumber);
+			}
+			catch (Exception ex)
+			{
+				throw new FaultException(ex.Message);
+			}
+		}
+
+		public DataTable GetCablesTable()
+		{
+			try
+			{
+				return base.Channel.GetCablesTable();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetCablesConversionTable()
+		{
+			try
+			{
+				return base.Channel.GetCablesConversionTable();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable GetWarehouseLocations()
+		{
+			try
+			{
+				return base.Channel.GetWarehouseLocations();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataSet GetAllMaterialInfo()
+		{
+			try
+			{
+				return base.Channel.GetAllMaterialInfo();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertCableKits(string orderNumber, string cableKitMaterialNumber, string cableMaterialNumber, string cableSerial, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertCableKits(orderNumber, cableKitMaterialNumber, cableMaterialNumber, cableSerial, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertRemote(string RemoteMaterialNumber, string RemoteSerialNumber, string KitMaterial_WhereUsed, int WHERE_USED_ID, string UAPID, string NOTE)
+		{
+			throw new NotImplementedException();
+		}
+
+		public DataTable spInsertSchick33orEliteStarterKit(string kitMaterialNumber, string kitSerial, string sensorMaterialNumber, int sensorSerialID, string remoteMaterialNumber, string remoteSerialNumber, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertSchick33orEliteStarterKit(kitMaterialNumber, kitSerial, sensorMaterialNumber, sensorSerialID, remoteMaterialNumber, remoteSerialNumber, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertSchick33EliteSensorKit(string kitMaterialNumber, string kitSerial, string sensorMaterialNumber, string sensorSerial, string cableMaterialNumber, string cableSerial, string spareCableSerial, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertSchick33EliteSensorKit(kitMaterialNumber, kitSerial, sensorMaterialNumber, sensorSerial, cableMaterialNumber, cableSerial, spareCableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertSchick33EliteRmaOrPdsiKit(string kitMaterialNumber, string kitSerialNumber, string sensorMaterialNumber, string sensorSerial, string cableMaterialNumber, string cableSerial, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertSchick33EliteRmaOrPdsiKit(kitMaterialNumber, kitSerialNumber, sensorMaterialNumber, sensorSerial, cableMaterialNumber, cableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertAEComboKit(string kitMaterialNumber, string kitSerialNumber, string sensor_S1_MaterialNumber, int sensor_S1_SerialNumberID, string sensor_S2_MaterialNumber, int sensor_S2_SerialNumberID, string remoteMaterialNumber, string remoteSerialNumber, string orderNumber, int uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertAEComboKit(kitMaterialNumber, kitSerialNumber, sensor_S1_MaterialNumber, sensor_S1_SerialNumberID, sensor_S2_MaterialNumber, sensor_S2_SerialNumberID, remoteMaterialNumber, remoteSerialNumber, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertAEStarterKit(string kitMaterialNumber, string kitSerialNumber, string sensorMaterialNumber, int sensorSerialNumberID, string remoteMaterialNumber, string remoteSerialNumber, string orderNumber, int uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertAEStarterKit(kitMaterialNumber, kitSerialNumber, sensorMaterialNumber, sensorSerialNumberID, remoteMaterialNumber, remoteSerialNumber, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertAESensorShipKit(string kitMaterialNumber, string kitSerialNumber, string sensorMaterialNumber, string cablePartNumber, string cableSerial, string spareCableSerial, string orderNumber, int uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertAESensorShipKit(kitMaterialNumber, kitSerialNumber, sensorMaterialNumber, cablePartNumber, cableSerial, spareCableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertAERmaShipKit(string kitMaterialNumber, string kitSerialNumber, string sensorMaterialNumber, string cablePartNumber, string cableSerial, string orderNumber, int uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertAERmaShipKit(kitMaterialNumber, kitSerialNumber, sensorMaterialNumber, cablePartNumber, cableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertEliteBasicKit(string kitMaterialNumber, string sensorMaterialNumber, string sensorSerial, string cableMaterialNumber, string cableSerial, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertEliteBasicKit(kitMaterialNumber, sensorMaterialNumber, sensorSerial, cableMaterialNumber, cableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertXiosAESensorShipKit(string kitMaterialNumber, string sensorMaterialNumber, string sensorSerial, string cableMaterialNumber, string cableSerial, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertXiosAESensorShipKit(kitMaterialNumber, sensorMaterialNumber, sensorSerial, cableMaterialNumber, cableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+
+		public DataTable spInsertXgSupremeSelectSensorShipKit(string kitMaterialNumber, string sensorMaterialNumber, string sensorSerial, string cableMaterialNumber, string cableSerial, string orderNumber, string uapid, string note)
+		{
+			try
+			{
+				return base.Channel.spInsertXgSupremeSelectSensorShipKit(kitMaterialNumber, sensorMaterialNumber, sensorSerial, cableMaterialNumber, cableSerial, orderNumber, uapid, note);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
+	}
+}

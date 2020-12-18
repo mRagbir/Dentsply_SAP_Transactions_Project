@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<client>
+  <endpoint address="http://localhost/SensorDataAccess.WebService/SensorDataAccessService.svc"
+    behaviorConfiguration="ImpersonateEndpointBehavior" binding="basicHttpBinding"
+    bindingConfiguration="BasicHttpBinding_DataService" contract="SensorDataAccess.Contract.ISensorDataAccessService"
+    name="HTTP" />
+  <endpoint address="http://localhost/SensorDataAccess.WebService/SensorDataPrintingService.svc"
+    behaviorConfiguration="ImpersonateEndpointBehavior" binding="basicHttpBinding"
+    bindingConfiguration="BasicHttpBinding_DataService" contract="SensorDataAccess.Contract.ISensorDataPrintingService"
+    name="HTTP_PRINT" />
+  <endpoint address="net.tcp://sironanycwip.schicknt.com:9002/SensorDataAccessEndpoint"
+    binding="netTcpBinding" bindingConfiguration="netTcpBinding_DataService"
+    contract="SensorDataAccess.Contract.ISensorDataAccessService"
+    name="TCP">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9022/SensorDataPrintingEndpoint"
+    binding="netTcpBinding" bindingConfiguration="netTcpBinding_DataService"
+    contract="SensorDataAccess.Contract.ISensorDataPrintingService"
+    name="TCP_PRINT">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9042/SensorDataUDPCommEndpoint"
+    binding="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataUDPCommService"
+    name="127.0.0.1">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9042/SensorDataUDPCommEndpoint"
+    binding="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataUDPCommService"
+    name="TCP_UDP_SENSOR_FLASH">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9052/SensorDataActionEndpoint"
+    binding="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataActionService"
+    name="TCP_ACTION">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9082/SensorDataDevices_PLCEndpoint"
+    behaviorConfiguration="ImpersonateEndpointBehavior" binding="netTcpBinding"
+    contract="SensorDataAccess.Contract.ISensorDataDevicesPLCService"
+    name="TCP_PLC">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9092/SensorDataDevices_SynergySensorEndpoint"
+    binding="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataDevices_SynergySensorService"
+    name="TCP_SYN">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://localhost:9110/SensorBransonWelderEndpoint"
+    behaviorConfiguration="ImpersonateEndpointBehavior" binding="netTcpBinding"
+    bindingConfiguration="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataBransonWelderService"
+    name="TCP_BRANSON_WELDER">
+    <identity>
+      <userPrincipalName value="localhost" />
+    </identity>
+  </endpoint>
+  <endpoint address="net.tcp://rvegaw7-2.schicknt.com:19200/SensorDataDevices_SIRAPIEndpoint"
+    binding="netTcpBinding" contract="SensorDataAccess.Contract.ISensorDataDevices_SIRAPIService"
+    name="TCP_SIRAPI" />
+  <endpoint address="net.tcp://10.1.19.49:18000/SensorDataAccessSAPEndpoint"
+    behaviorConfiguration="ImpersonateEndpointBehavior" binding="netTcpBinding"
+    bindingConfiguration="netTcpBinding_DataService" contract="Dentsply_SAP_Transactions_Service.ISapService"
+    name="SAPTCP">
+    <identity>
+      <userPrincipalName value="localhost|mragbir" />
+    </identity>
+  </endpoint>
+  <endpoint address="http://atproomw10-1.schicknt.com:9876/Service1.svc"
+    binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IServiceContracts"
+    contract="ProductionUtilitiesService.IServiceContracts" name="BasicHttpBinding_IServiceContracts" />
+  <endpoint address="http://schickweb.schicknt.com/Services/SensorDataAccessServiceWS.asmx"
+    binding="basicHttpBinding" bindingConfiguration="SensorDataAccessServiceWSSoap2"
+    contract="SchickWeb.SensorDataAccessServiceWSSoap" name="SensorDataAccessServiceWSSoap" />
+</client>

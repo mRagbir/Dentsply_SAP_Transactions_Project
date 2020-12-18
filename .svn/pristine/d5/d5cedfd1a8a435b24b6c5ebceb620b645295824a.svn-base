@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<behaviors>
+  <endpointBehaviors>
+    <behavior name="ImpersonateEndpointBehavior">
+    </behavior>
+  </endpointBehaviors>
+  <serviceBehaviors>
+    <behavior name="SimpleServiceBehavior">
+      <serviceMetadata httpGetEnabled="true"
+                       httpGetUrl="http://localhost/SensorSAP.WebService/SensorSAPService.svc"
+                       policyVersion="Policy15" />
+    </behavior>
+    <behavior name="serviceBehavior" >
+      <serviceMetadata />
+      <dataContractSerializer maxItemsInObjectGraph="2147483647"/>
+      <serviceDebug includeExceptionDetailInFaults="false" />
+    </behavior>  </serviceBehaviors>
+</behaviors>
